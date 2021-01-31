@@ -26,6 +26,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd )
 {
+	player.x = 25;
+	player.y = 25;
 }
 
 void Game::Go()
@@ -36,32 +38,21 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
-void Game::drawPlayer()
-{
-	for (int i = playerX; i < playerX + playerWidth; i++) 
-	{
-		for (int j = playerY; j < playerY + playerHeight; j++) 
-		{
-			gfx.PutPixel(i, j, 25, 231, 114);
-		}
-	}
-}
-
 void Game::movePlayer()
 {
-	if ((playerX + playerVelocityX > 0) && ((playerX + playerWidth) + playerVelocityX < gfx.ScreenWidth))
+	if ((player.x + player.vx > 0) && ((player.x + Player::width) + player.vx < gfx.ScreenWidth))
 	{
-		playerX += playerVelocityX;
+		player.x += player.vx;
 	}
 	else {
-		playerVelocityX = 0;
+		player.vx = 0;
 	}
-	if ((playerY + playerVelocityY > 0) && ((playerY + playerHeight) + playerVelocityY < gfx.ScreenHeight))
+	if ((player.y + player.vy > 0) && ((player.y + Player::height) + player.vy < gfx.ScreenHeight))
 	{
-		playerY += playerVelocityY;
+		player.y += player.vy;
 	}
 	else {
-		playerVelocityY = 0;
+		player.vy = 0;
 	}
 }
 
@@ -69,54 +60,54 @@ void Game::UpdateModel()
 {
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		if (playerVelocityY > playerMaxVelocity * -1)
+		if (player.vy > Player::maxV * -1)
 		{
-			playerVelocityY--;
+			player.vy--;
 		}
 	}
-	else if (playerVelocityY < 0)
+	else if (player.vy < 0)
 	{
-		playerVelocityY++;
+		player.vy++;
 	}
 
 
 	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		if (playerVelocityY < playerMaxVelocity)
+		if (player.vy < Player::maxV)
 		{
-			playerVelocityY++;
+			player.vy++;
 		}
 	}
-	else if (playerVelocityY > 0) {
-		playerVelocityY--;
+	else if (player.vy > 0) {
+		player.vy--;
 	}
 
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
-		if (playerVelocityX < playerMaxVelocity)
+		if (player.vx < Player::maxV)
 		{
-			playerVelocityX++;
+			player.vx++;
 		}
 	}
-	else if (playerVelocityX > 0) {
-		playerVelocityX--;
+	else if (player.vx > 0) {
+		player.vx--;
 	}
 
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		if (playerVelocityX > playerMaxVelocity * -1)
+		if (player.vx > Player::maxV * -1)
 		{
-			playerVelocityX--;
+			player.vx--;
 		}
 	}
-	else if (playerVelocityX < 0) {
-		playerVelocityX++;
+	else if (player.vx < 0) {
+		player.vx++;
 	}
 
-	movePlayer();
+	player.move(gfx);
 }
 
 void Game::ComposeFrame()
 {
-	drawPlayer();
+	player.draw(gfx);
 }
