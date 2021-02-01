@@ -41,72 +41,9 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
-void Game::movePlayer()
-{
-	if ((player.x + player.vx > 0) && ((player.x + Player::width) + player.vx < gfx.ScreenWidth))
-	{
-		player.x += player.vx;
-	}
-	else {
-		player.vx = 0;
-	}
-	if ((player.y + player.vy > 0) && ((player.y + Player::height) + player.vy < gfx.ScreenHeight))
-	{
-		player.y += player.vy;
-	}
-	else {
-		player.vy = 0;
-	}
-}
-
 void Game::UpdateModel()
 {
-	if (wnd.kbd.KeyIsPressed(VK_UP))
-	{
-		if (player.vy > Player::maxV * -1)
-		{
-			player.vy--;
-		}
-	}
-	else if (player.vy < 0)
-	{
-		player.vy++;
-	}
-
-
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
-	{
-		if (player.vy < Player::maxV)
-		{
-			player.vy++;
-		}
-	}
-	else if (player.vy > 0) {
-		player.vy--;
-	}
-
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	{
-		if (player.vx < Player::maxV)
-		{
-			player.vx++;
-		}
-	}
-	else if (player.vx > 0) {
-		player.vx--;
-	}
-
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	{
-		if (player.vx > Player::maxV * -1)
-		{
-			player.vx--;
-		}
-	}
-	else if (player.vx < 0) {
-		player.vx++;
-	}
-
+	player.moveControl(wnd);
 	player.move(gfx);
 	poo0.update();
 }

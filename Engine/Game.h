@@ -38,7 +38,6 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void movePlayer();
 	/********************************/
 private:
 	MainWindow& wnd;
