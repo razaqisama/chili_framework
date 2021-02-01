@@ -24,10 +24,13 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	rng( rd()),
+	xDist(50, 770),
+	yDist(50, 570),
+	player( 25, 25),
+	poo0(xDist(rng), yDist(rng), 3, 3)
 {
-	player.x = 25;
-	player.y = 25;
 }
 
 void Game::Go()
@@ -105,9 +108,11 @@ void Game::UpdateModel()
 	}
 
 	player.move(gfx);
+	poo0.update();
 }
 
 void Game::ComposeFrame()
 {
+	poo0.draw(gfx);
 	player.draw(gfx);
 }
