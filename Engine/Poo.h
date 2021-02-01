@@ -1,11 +1,15 @@
 #pragma once
 #include "Graphics.h"
+#include "Player.h"
 class Poo
 {
 public: 
-	Poo(int in_x, int in_y, int in_vx, int in_vy);
+	void init(int in_x, int in_y, int in_vx, int in_vy);
 	void draw(Graphics& gfx);
-	void update();
+	void updatePosition();
+	void processConsumption(Player& player);
+	bool IsEaten();
+	
 
 private:
 	int x;
@@ -16,6 +20,6 @@ private:
 	static constexpr int width = 25;
 	static constexpr int height = 25;
 	static constexpr int maxV = 5;
-
 	bool isEaten = false;
+	bool initialized = false;
 };
