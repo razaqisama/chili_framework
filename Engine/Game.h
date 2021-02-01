@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Player.h"
 #include "Poo.h"
+#include "Enemy.h"
 #include <random>
 class Game
 {
@@ -53,5 +54,6 @@ private:
 	Player player;
 	static constexpr int allPoos = 8;
 	Poo poos[allPoos];
+	Enemy enemy;
 	/********************************/
 };
