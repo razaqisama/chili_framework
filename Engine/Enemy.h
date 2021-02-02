@@ -9,7 +9,7 @@ public:
 	void follow(Player& player);
 	void draw(Graphics& gfx) const;
 	void move(Graphics& gfx);
-
+	void processCapturing(Player& player);
 public: 
 	static constexpr int width = 25;
 	static constexpr int height = 25;

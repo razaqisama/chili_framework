@@ -87,3 +87,13 @@ int Player::getY()
 {
 	return y;
 }
+
+bool Player::isCaptured()
+{
+	return captured;
+}
+
+void Player::setCaptured(bool capture)
+{
+	captured = capture;
+}

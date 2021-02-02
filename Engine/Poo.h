@@ -17,8 +17,8 @@ public:
 private:
 	int x;
 	int y;
-	int vx;
-	int vy;
+	int vx = 0;
+	int vy = 0;
 
 	bool isEaten = false;
 	bool initialized = false;
