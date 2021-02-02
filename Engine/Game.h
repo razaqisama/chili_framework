@@ -23,7 +23,10 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-
+#include "Player.h"
+#include "Poo.h"
+#include "Enemy.h"
+#include <random>
 class Game
 {
 public:
@@ -34,13 +37,31 @@ public:
 private:
 	void ComposeFrame();
 	void UpdateModel();
+	void drawStartGame(int x, int y);
+	void drawGameOver(int x, int y);
+	void drawWin(int x, int y);
 	/********************************/
 	/*  User Functions              */
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> xDist;
+	std::uniform_int_distribution<int> yDist;
+	std::uniform_int_distribution<int> vDist;
+
 	/********************************/
 	/*  User Variables              */
+	bool isStarted = false;
+	bool isGameOver = false;
+	bool isAllEaten = false;
+	bool isVictory = false;
+
+	Player player;
+	static constexpr int allPoos = 8;
+	Poo poos[allPoos];
+	Enemy enemy;
 	/********************************/
 };
