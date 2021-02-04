@@ -29,8 +29,7 @@ Game::Game( MainWindow& wnd )
 	xDist(50, 770),
 	yDist(50, 570),
 	vDist(-3, 3),
-	player( 25, 25),
-	enemy(700 , 500)
+	player( 25, 25)
 {
 	for (int i = 0; i < allPoos; i++)
 	{
@@ -48,12 +47,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	enemy.follow(player);
-	enemy.move(gfx);
-
 	player.moveControl(wnd);
 	player.move(gfx);
-
 	for (int i = 0; i < allPoos; i++)
 	{
 		poos[i].updatePosition();
@@ -72,5 +67,4 @@ void Game::ComposeFrame()
 		}
 	}
 	player.draw(gfx);
-	enemy.draw(gfx);
 }

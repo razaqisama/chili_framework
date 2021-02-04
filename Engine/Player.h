@@ -1,5 +1,6 @@
 #pragma once
 #include "Graphics.h"
+#include "Colors.h"
 #include "MainWindow.h"
 class Player
 {

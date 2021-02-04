@@ -11,7 +11,7 @@ void Poo::init(int in_x, int in_y, int in_vx, int in_vy)
 	initialized = true;
 }
 
-void Poo::draw(Graphics& gfx) const
+void Poo::draw(Graphics& gfx)
 {
 	assert(initialized == true);
 	gfx.drawRect(x, y, width, height, Colors::MakeRGB(11, 191, 205));
