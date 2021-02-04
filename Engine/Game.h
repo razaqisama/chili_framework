@@ -36,20 +36,11 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
-	void drawPlayer();
-	void movePlayer();
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	int playerX = 25;
-	int playerY = 25;
-	const int playerWidth = 10;
-	const int playerHeight = 10;
-	int playerVelocityX = 0;
-	int playerVelocityY = 0;
-	const int playerMaxVelocity = 10;
 	/********************************/
 };
