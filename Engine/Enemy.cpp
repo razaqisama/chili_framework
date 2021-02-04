@@ -52,13 +52,3 @@ void Enemy::move(Graphics& gfx)
 		vy = 0;
 	}
 }
-
-void Enemy::processCapturing(Player& player)
-{
-	if ((player.getX() < (x + width)) && (player.getX() + Player::width > x) &&
-		(player.getY() < y + height) && (player.getY() + Player::height > y))
-	{
-		player.setCaptured(true);
-	}
-
-}
