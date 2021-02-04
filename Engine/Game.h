@@ -23,7 +23,6 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-#include "Player.h"
 
 class Game
 {
@@ -37,6 +36,7 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void drawPlayer();
 	void movePlayer();
 	/********************************/
 private:
@@ -44,6 +44,12 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Player player;
+	int playerX = 25;
+	int playerY = 25;
+	const int playerWidth = 10;
+	const int playerHeight = 10;
+	int playerVelocityX = 0;
+	int playerVelocityY = 0;
+	const int playerMaxVelocity = 10;
 	/********************************/
 };
