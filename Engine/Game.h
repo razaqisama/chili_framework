@@ -42,7 +42,6 @@ private:
 	void drawWin(int x, int y);
 	/********************************/
 	/*  User Functions              */
-
 	/********************************/
 private:
 	MainWindow& wnd;
