@@ -24,8 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Player.h"
-#include "Poo.h"
-#include <random>
+
 class Game
 {
 public:
@@ -43,15 +42,8 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
-	std::random_device rd;
-	std::mt19937 rng;
-	std::uniform_int_distribution<int> xDist;
-	std::uniform_int_distribution<int> yDist;
-
-
 	/********************************/
 	/*  User Variables              */
 	Player player;
-	Poo poo0;
 	/********************************/
 };

@@ -1,11 +1,5 @@
 #include "player.h"
 
-Player::Player(int in_x, int in_y)
-{
-	x = in_x;
-	y = in_y;
-}
-
 void Player::move(Graphics& gfx)
 {
 	if ((x + vx > 0) && ((x + width) + vx < gfx.ScreenWidth))
