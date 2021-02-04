@@ -28,13 +28,9 @@ Game::Game( MainWindow& wnd )
 	rng( rd()),
 	xDist(50, 770),
 	yDist(50, 570),
-	vDist(-3, 3),
-	player( 25, 25)
+	player( 25, 25),
+	poo0(xDist(rng), yDist(rng), 3, 3)
 {
-	for (int i = 0; i < allPoos; i++)
-	{
-		poos[i].init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
-	}
 }
 
 void Game::Go()
@@ -49,22 +45,11 @@ void Game::UpdateModel()
 {
 	player.moveControl(wnd);
 	player.move(gfx);
-	for (int i = 0; i < allPoos; i++)
-	{
-		poos[i].updatePosition();
-		poos[i].processConsumption(player);
-	}
-
+	poo0.update();
 }
 
 void Game::ComposeFrame()
 {
-	for (int i = 0; i < allPoos; i++)
-	{
-		if (!poos[i].IsEaten())
-		{
-			poos[i].draw(gfx);
-		}
-	}
+	poo0.draw(gfx);
 	player.draw(gfx);
 }

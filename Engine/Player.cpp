@@ -77,13 +77,3 @@ void Player::draw(Graphics& gfx) const
 {
 	gfx.drawRect(x, y, width, height, Colors::MakeRGB(255,233,213));
 }
-
-int Player::getX()
-{
-	return x;
-}
-
-int Player::getY()
-{
-	return y;
-}
