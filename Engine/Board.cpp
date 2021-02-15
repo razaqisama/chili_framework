@@ -7,7 +7,7 @@ Board::Board(Graphics& gfx)
 
 }
 
-void Board::drawCell(Location& loc, Color c)
+void Board::drawCell(const Location& loc, Color c)
 {
 	assert(loc.x >= 0);
 	assert(loc.x < width);
@@ -16,12 +16,12 @@ void Board::drawCell(Location& loc, Color c)
 	gfx.DrawRectDim(loc.x * dimension, loc.y * dimension, dimension, dimension , c);
 }
 
-int Board::getWidth()
+int Board::getWidth() const
 {
 	return width;
 }
 
-int Board::getHeight()
+int Board::getHeight() const
 {
 	return height;
 }

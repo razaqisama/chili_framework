@@ -5,9 +5,9 @@
 class Board {
 public:
 	Board(Graphics& gfx);
-	void drawCell(Location& loc, Color c);
-	int getWidth();
-	int getHeight();
+	void drawCell( const Location& loc, Color c);
+	int getWidth() const;
+	int getHeight() const;
 
 private:
 	static constexpr int dimension = 20;

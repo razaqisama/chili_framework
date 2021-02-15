@@ -26,7 +26,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	brd( gfx ),
-	rng(std::random_device()())
+	rng(std::random_device()()),
+	snek(snakeFirst)
 {
 }
 
@@ -40,18 +41,36 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		Location up = { 0,-1 };
+		snek.moveBy(up);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	{
+		Location down = { 0, 1 };
+		snek.moveBy(down);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		Location left = { -1,0 };
+		snek.moveBy(left);
+	}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		Location right = { 1,0 };
+		snek.moveBy(right);
+	}
+
+
+	if (wnd.kbd.KeyIsPressed(VK_LSHIFT))
+	{
+		snek.grow();
+	}
 }
 
 void Game::ComposeFrame()
 {
-	std::uniform_int_distribution<int> colorDist(0, 255);
-
-	for (int y = 0; y < brd.getHeight(); y++) {
-		for (int x = 0; x < brd.getWidth(); x++) {
-			Location loc = { x, y };
-			Color c(colorDist(rng), colorDist(rng), colorDist(rng) );
-			brd.drawCell(loc, c);
-		}
-	}
+	snek.draw(brd);
 
 }

@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Board.h"
 #include "Location.h"
+#include "Snake.h"
 #include <random>
 class Game
 {
@@ -45,6 +46,9 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Board brd;
+	Snake snek;
+	Location snakeFirst = { 1, 1 };
+
 	std::mt19937 rng;
 
 	/********************************/
