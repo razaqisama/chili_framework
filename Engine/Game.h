@@ -47,9 +47,9 @@ private:
 	/*  User Variables              */
 	Board brd;
 	Snake snek;
-	Location snakeFirst = { 1, 1 };
-
+	Location deltaLoc = { 1,0 };
 	std::mt19937 rng;
-
+	static constexpr int maxFPS = 10;
+	int counterFrame = 0;
 	/********************************/
 };

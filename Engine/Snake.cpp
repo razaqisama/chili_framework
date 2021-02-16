@@ -18,6 +18,7 @@ void Snake::grow()
 {
 	if (nSegments < segmentMax) 
 	{
+		seg[nSegments].initBody();
 		nSegments++;
 	}
 }

@@ -27,7 +27,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	brd( gfx ),
 	rng(std::random_device()()),
-	snek(snakeFirst)
+	snek({2,2})
 {
 }
 
@@ -41,31 +41,34 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if ( wnd.kbd.KeyIsPressed(VK_UP) && (deltaLoc.y != 1) )
 	{
-		Location up = { 0,-1 };
-		snek.moveBy(up);
+		deltaLoc = { 0,-1 };
 	}
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	if (wnd.kbd.KeyIsPressed(VK_DOWN) && (deltaLoc.y != -1) )
 	{
-		Location down = { 0, 1 };
-		snek.moveBy(down);
+		deltaLoc = { 0, 1 };
 	}
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	if (wnd.kbd.KeyIsPressed(VK_LEFT) && (deltaLoc.x != 1) )
 	{
-		Location left = { -1,0 };
-		snek.moveBy(left);
+		deltaLoc = { -1,0 };
 	}
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT) && (deltaLoc.x != -1))
 	{
-		Location right = { 1,0 };
-		snek.moveBy(right);
+		deltaLoc = { 1,0 };
 	}
 
 
-	if (wnd.kbd.KeyIsPressed(VK_LSHIFT))
-	{
-		snek.grow();
+
+	counterFrame++;
+
+	if (counterFrame > maxFPS) {
+		counterFrame = 0;
+		if (wnd.kbd.KeyIsPressed(VK_SHIFT))
+		{
+			snek.grow();
+		}
+		snek.moveBy(deltaLoc);
 	}
 }
 
